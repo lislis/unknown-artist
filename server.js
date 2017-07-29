@@ -18,7 +18,7 @@ let cS
 let at
 
 const host = '127.0.0.1';
-const port = '3002';
+const port = env.PORT || '3002';
 
 Mastodon.createOAuthApp(`${serverUrl}/api/v1/apps`, 'Unkown')
   .then((data) => {
@@ -52,7 +52,7 @@ app.use(express.static(__dirname + '/assets'));
 
 
 app.get('/', function(req, res) {
-  res.render('index', { });
+  res.render('index', { mastodonAcc: `${env.INSTANCE}/${env.ACCOUNT}` });
 });
 
 app.post('/file-upload', upload.single('pic'), function(req, res, next) {

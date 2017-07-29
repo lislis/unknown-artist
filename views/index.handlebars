@@ -1,4 +1,35 @@
-<div class="gui">
-  <p>Press <code>start</code> to start over.</p>
-  <p>Press <code>select</code> to save your image.</p>
+<div class="modal" id="intro-modal">
+  <div class="modal-inner">
+    <h1>Hey there artist in spe!</h1>
+    <p>Let's make make some art!</p>
+
+    <p>You can <strong>move</strong> with the <code>dpad</code> on a gamepad or with the <code>arrow keys</code> on your keyboard</p>
+    <p><strong>Change</strong> colors with <code>gamepad buttons</code> or with <code>1, 2, 3, 4</code> on your keyboard.</p>
+
+    <p>Press <code>start</code> or <code>space</code> to <strong>clear the background</strong>.</p>
+    <p>Press <code>select</code> or <code>enter</code> to <strong>publish</strong> your image.</p>
+
+    <button type="button" id="close-modal">OK</button>
+  </div>
 </div>
+
+
+<div class="wrapper">
+  <div class="wrapper-inner">
+    <div id="p5_loading" class="loading">HANG TIGHT IT IS LOADING</div>
+    <div id="sketch-holder"></div>
+    <div class="gui">
+       <p>Press <code>start</code> or <code>space</code> to <strong>clear the background</strong>.</p>
+       <p>Press <code>select</code> or <code>enter</code> to <strong>publish</strong> your image.</p>
+
+       <p>View the <a href="{{mastodonAcc}}" title="Go to see the images already created" target="_blank">unknown artist's gallery</a>.</p>
+    </div>
+  </div>
+  <footer><p>Made by <a href="https://lislis.de/" title="lislis' website" target="blank">lislis</a>, published on <a href="https://github.com/lislis/unknown-artist" title="unknown artist on GitHub" target="blank">GitHub</a> under the <a href="https://github.com/lislis/unknown-artist/blob/master/LICENSE" title="Read Unlicense" target="_blank">Unlicense</a>.</p></footer>
+</div>
+
+<script>
+ document.getElementById('close-modal').addEventListener('click', () => {
+   document.getElementById('intro-modal').remove();
+ });
+</script>
