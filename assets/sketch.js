@@ -41,6 +41,14 @@ var colors = {
   3: [176, 255, 148]
 }
 
+var notify = function(message) {
+  let note = document.createElement('div');
+  note.innerHTML = message;
+  note.classList.add('note');
+  document.body.appendChild(note);
+  setTimeout(() => { note.remove() }, 4000);
+}
+
 var paintArea = {
   w: 600,
   h: 400
@@ -82,6 +90,7 @@ function gameLoop() {
     if (gp.buttons[6].pressed) {
       flags.saving = true;
 
+      notify('Image published!');
       postSound.play();
       ctx.canvas.toBlob((blob) => {
         let formdata = new FormData();
@@ -102,6 +111,7 @@ function gameLoop() {
     if (gp.buttons[7].pressed) {
       flags.clearing = true;
       clear();
+      notify('Background cleared!');
       startSound.play();
     }
   } else {
@@ -154,7 +164,7 @@ function setup() {
   song.loop();
   analyzer = new p5.Amplitude();
   analyzer.setInput(song);
-  noLoop();
+  //noLoop();
 }
 
 function draw() {
