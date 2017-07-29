@@ -1,9 +1,10 @@
 {
-  "name": "unknown-node",
+  "name": "unknown-artist",
   "version": "1.0.0",
-  "description": "",
+  "description": "interactive art project",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lislis",
@@ -16,7 +17,6 @@
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "mastodon-api": "^1.3.0",
-    "multer": "^1.3.0",
-    "node-fetch": "^1.7.1"
+    "multer": "^1.3.0"
   }
 }

@@ -2,9 +2,3 @@
   <p>Press <code>start</code> to start over.</p>
   <p>Press <code>select</code> to save your image.</p>
 </div>
-
-<form id="postpic" method="post" enctype="multipart/form-data" action="/file-upload">
-  <input type="file" name="pic">
-  <input type="hidden" name="_csrf" value="{{csrfToken}}">
-  <input type="submit" value="send">
-</form>

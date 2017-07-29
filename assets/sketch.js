@@ -31,6 +31,8 @@ var button = {
   7: 'start'
 }
 
+let ctx;
+
 var colors = {
   0: [255, 148, 164],
   1: [255, 237, 148],
@@ -42,7 +44,6 @@ var paintArea = {
   w: 600,
   h: 400
 }
-
 
 var paint = colors[Math.ceil(Math.random() * 4) -1];
 
@@ -80,7 +81,18 @@ function gameLoop() {
   if (!flags.saving) {
     if (gp.buttons[6].pressed) {
       flags.saving = true;
-      saveCanvas(`unknown-mind-${year()}-${month()}-${day()}-${hour()}:${minute()}`,'png');
+      //saveCanvas(`unknown-mind-${year()}-${month()}-${day()}-${hour()}:${minute()}`,'png');
+
+      ctx.canvas.toBlob((blob) => {
+        let formdata = new FormData();
+        formdata.append("pic", blob);
+        fetch('/file-upload', {
+          method: 'POST',
+          body: formdata
+        })
+      }, 'image/png');
+      //let blob = ctx.canvas.toDataURL();
+
     }
   } else {
     if (!gp.buttons[6].pressed) {
@@ -128,7 +140,6 @@ function gameLoop() {
   start = rAF(gameLoop);
 };
 
-
 var song, fft, analyzer;
 
 function preload() {
@@ -136,7 +147,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(paintArea.w, paintArea.h);
+  ctx = createCanvas(paintArea.w, paintArea.h);
   noCursor();
   song.loop();
   fft = new p5.FFT();

@@ -33,7 +33,7 @@ Mastodon.createOAuthApp(`${serverUrl}/api/v1/apps`, 'Unkown')
         return;
       }
       at = JSON.parse(stdout);
-      console.log(at);
+      console.log('auth successful');
       return true;
     });
 
@@ -48,7 +48,7 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser);
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/assets'));
 
 
 app.get('/', function(req, res) {
@@ -62,6 +62,7 @@ app.post('/file-upload', upload.single('pic'), function(req, res, next) {
     access_token: at.access_token,
     api_url: serverUrl + '/api/v1/'
   })
+
   M.post('media', { file: fs.createReadStream(req.file.path) })
     .then(resp => {
       const id = resp.data.id;
