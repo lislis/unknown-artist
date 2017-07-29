@@ -1,6 +1,7 @@
 # Unknown artist
 
 > made for and at Slavic Game Jam 2017
+
 > Theme: unknown
 
 ## What?
