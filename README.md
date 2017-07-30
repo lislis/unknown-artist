@@ -7,7 +7,7 @@
 ## What?
 
 This project has two logical parts:
-1) **Draw a coloful image to happy music**
+1) **Draw a colorful image to happy music**
 This was inspired by the gloomy doom talks shortly before the theme was announced.
 I usually make games with less happy themes so I thought making someting coloful and relaxing would be nice. I used p5.js for that.
 I played around with an USB gamepad to toy around with the Web Gamepad API for drawing. That was interesting!
@@ -15,6 +15,8 @@ I played around with an USB gamepad to toy around with the Web Gamepad API for d
 2) **Publish the image on social media**
 First I had the created image only available as download. But what is art if nobody sees it? After Twitter blocking my test account I decided to use Mastodon as social media platform. I wrote a node server that takes the created from the canvas and posts (or toots as they say in Mastodon land) it to an account.
 The account is called unkown and shows images created by unknown individuals.
+
+![itch.io title card](titlecard.png)
 
 
 ## Running it locally
