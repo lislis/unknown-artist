@@ -1,3 +1,4 @@
+// setup
 var button = {
   0: 'red',
   1: 'yellow',
@@ -135,7 +136,7 @@ window.addEventListener("gamepaddisconnected", function() {
 window.addEventListener("gamepadconnected", function(e) {
   var gp = navigator.getGamepads()[e.gamepad.index];
   console.log("Gamepad connected at index " + gp.index + ": " + gp.id + ". It has " + gp.buttons.length + " buttons and " + gp.axes.length + " axes.");
-  console.log(gp);
+  // console.log(gp);
   gameLoop();
 });
 
@@ -147,7 +148,7 @@ function gameLoop() {
 
   for (var b = 0; b < gp.buttons.length; b++) {
     if (gp.buttons[b].pressed) {
-      console.log('Pressed ', button[b]);
+      // console.log('Pressed ', button[b]);
       if (b <=3) {
         paint = colors[b];
       }
@@ -183,21 +184,21 @@ function gameLoop() {
   }
 
   if (gp.axes[0] > 0.5) {
-    console.log('right');
+    // console.log('right');
     pointer.x += pointer.v * 1;
     pointer.w -= pointer.v * 0.5;
   } else if (gp.axes[0] < -0.5) {
-    console.log('left');
+    //console.log('left');
     pointer.x -= pointer.v * 1;
     pointer.w += pointer.v * 0.5;
   }
 
   if (gp.axes[1] > 0.5) {
-    console.log('up');
+    // console.log('up');
     pointer.y += pointer.v * 1;
     pointer.h -= pointer.v * 0.5;
   } else if (gp.axes[1] < -0.5) {
-    console.log('down');
+    // console.log('down');
     pointer.y -= pointer.v * 1;
     pointer.h += pointer.v * 0.5;
   }
