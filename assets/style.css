@@ -56,7 +56,8 @@ button {
   background-color: #86bfe4;
   border: 1px solid #3f8fc3;
   padding: 0.5em 1em;
-  cursor:} pointer;
+  cursor: pointer;
+}
 
 button:active,
 button:hover,
@@ -132,6 +133,11 @@ footer {
   border-radius: 4px;
   color: #ffffff;
   animation: notifyMe 1 4s ease;
+}
+
+.note a {
+  display: block;
+  color: white;
 }
 
 @keyframes notifyMe {

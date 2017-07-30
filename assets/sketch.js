@@ -41,10 +41,16 @@ var colors = {
   3: [176, 255, 148]
 }
 
-var notify = function(message) {
+var notify = function(message, url = '') {
   let note = document.createElement('div');
   note.innerHTML = message;
   note.classList.add('note');
+  if (url !== '') {
+    let link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.innerHTML = 'Click to view Image'
+    note.appendChild(link);
+  }
   document.body.appendChild(note);
   setTimeout(() => { note.remove() }, 4000);
 }
@@ -89,8 +95,8 @@ function gameLoop() {
   if (!flags.saving) {
     if (gp.buttons[6].pressed) {
       flags.saving = true;
-
-      notify('Image published!');
+      let url = document.querySelector('#dom-url').getAttribute('href');
+      notify('Image published!', url);
       postSound.play();
       ctx.canvas.toBlob((blob) => {
         let formdata = new FormData();
@@ -98,7 +104,7 @@ function gameLoop() {
         fetch('/file-upload', {
           method: 'POST',
           body: formdata
-        })
+        });
       }, 'image/png');
     }
   } else {
@@ -175,5 +181,5 @@ function draw() {
 
   var rms = analyzer.getLevel();
 
-  rect(pointer.x, pointer.y, pointer.w + rms * 100, pointer.h + rms * 100);
+  rect(pointer.x, pointer.y, pointer.w + rms * 50, pointer.h + rms * 50);
 }

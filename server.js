@@ -13,9 +13,8 @@ const { env } = require('process');
 require('dotenv').config()
 
 const serverUrl = env.INSTANCE
-let cId
-let cS
 let at
+let imageUrl
 
 const host = '127.0.0.1';
 const port = env.PORT || '3002';
@@ -67,10 +66,14 @@ app.post('/file-upload', upload.single('pic'), function(req, res, next) {
     .then(resp => {
       const id = resp.data.id;
       M.post('statuses', { status: 'by unknown', media_ids: [id] })
-        .then(resp => { console.log('tooted')},
-              err => { console.log(err) })
+        .then(resp => {
+          console.log('tooted')
+          debugger
+          imageUrl = resp.url
+        }, err => { console.log(err) })
     }, err => { console.log('err') });
-  res.redirect('/');
+  //  res.redirect('/');
+  res.send(JSON.stringify({ image: imageUrl }))
 });
 
 app.listen(port, function() {
